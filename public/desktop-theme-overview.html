@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desktop Theme Overview</title>
+    <style>
+      @font-face {
+        font-family: 'DB Ozone X';
+        src: url('https://v2.bl7v4.com/media/DBOzoneX.woff2') format('woff2');
+        font-display: swap;
+      }
+      :root {
+        color-scheme: dark;
+        font-family: 'DB Ozone X', sans-serif;
+        background: #090909;
+        color: #fff;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; padding: 24px; background: #090909; }
+      header { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; margin: 0 auto 18px; max-width: 1660px; }
+      h1 { margin: 0; font-size: 26px; }
+      p { margin: 0; color: #aaa; font-size: 14px; }
+      .overview-grid { width: min(100%, 1660px); margin: 0 auto; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px 15px; }
+      .theme-card { min-width: 0; overflow: hidden; border: 1px solid #3b3b3b; border-radius: 10px; background: #151515; box-shadow: 0 8px 25px #0008; }
+      .theme-label { height: 38px; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+      .theme-name { font-weight: 700; font-size: 15px; }
+      .theme-accent { width: 18px; height: 18px; flex: 0 0 18px; border: 2px solid #fff; border-radius: 50%; background: var(--swatch); }
+      .preview-window { width: 100%; overflow: hidden; background: #000; }
+      .preview-window iframe { width: 1280px; height: 720px; border: 0; transform: scale(.25); transform-origin: top left; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Desktop Theme Overview · 5×2</h1>
+      <p>All previews use the same 1280×720 Desktop viewport.</p>
+    </header>
+    <main class="overview-grid">
+      <article class="theme-card"><div class="theme-label"><span class="theme-name">Berlin Red · Original</span><span class="theme-accent" style="--swatch:#e90211"></span></div><div class="preview-window"><iframe src="/?theme=original" title="Berlin Red desktop preview"></iframe></div></article>
+      <article class="theme-card"><div class="theme-label"><span class="theme-name">Ocean Blue</span><span class="theme-accent" style="--swatch:#1596ff"></span></div><div class="preview-window"><iframe src="/?theme=ocean" title="Ocean Blue desktop preview"></iframe></div></article>
+      <article class="theme-card"><div class="theme-label"><span class="theme-name">Royal Violet</span><span class="theme-accent" style="--swatch:#7b3ff2"></span></div><div class="preview-window"><iframe src="/?theme=violet" title="Royal Violet desktop preview"></iframe></div></article>
+      <article class="theme-card"><div class="theme-label"><span class="theme-name">Neon Pink</span><span class="theme-accent" style="--swatch:#ff2d91"></span></div><div class="preview-window"><iframe src="/?theme=pink" title="Neon Pink desktop preview"></iframe></div></article>
+      <article class="theme-card"><div class="theme-label"><span class="theme-name">Emerald</span><span class="theme-accent" style="--swatch:#00b873"></span></div><div class="preview-window"><iframe src="/?theme=emerald" title="Emerald desktop preview"></iframe></div></article>
+      <article class="theme-card"><div class="theme-label"><span class="theme-name">Sunset</span><span class="theme-accent" style="--swatch:#ff6b00"></span></div><div class="preview-window"><iframe src="/?theme=sunset" title="Sunset desktop preview"></iframe></div></article>
+      <article class="theme-card"><div class="theme-label"><span class="theme-name">Electric Gold</span><span class="theme-accent" style="--swatch:#f2bd00"></span></div><div class="preview-window"><iframe src="/?theme=gold" title="Electric Gold desktop preview"></iframe></div></article>
+      <article class="theme-card"><div class="theme-label"><span class="theme-name">Ice Blue</span><span class="theme-accent" style="--swatch:#52d6ff"></span></div><div class="preview-window"><iframe src="/?theme=ice" title="Ice Blue desktop preview"></iframe></div></article>
+      <article class="theme-card"><div class="theme-label"><span class="theme-name">Acid Lime</span><span class="theme-accent" style="--swatch:#b9ee00"></span></div><div class="preview-window"><iframe src="/?theme=lime" title="Acid Lime desktop preview"></iframe></div></article>
+      <article class="theme-card"><div class="theme-label"><span class="theme-name">Soft Coral</span><span class="theme-accent" style="--swatch:#FBA48F"></span></div><div class="preview-window"><iframe src="/?theme=crimson" title="Soft Coral desktop preview"></iframe></div></article>
+    </main>
+    <script>
+      function sizePreviews() {
+        document.querySelectorAll('.preview-window').forEach((windowElement) => {
+          const scale = windowElement.clientWidth / 1280;
+          windowElement.style.height = `${720 * scale}px`;
+          windowElement.querySelector('iframe').style.transform = `scale(${scale})`;
+        });
+      }
+      new ResizeObserver(sizePreviews).observe(document.querySelector('.overview-grid'));
+      window.addEventListener('load', sizePreviews);
+      window.addEventListener('resize', sizePreviews);
+    </script>
+  </body>
+</html>

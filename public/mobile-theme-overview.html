@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mobile Theme Overview</title>
+    <style>
+      :root { color-scheme: dark; font-family: Arial, sans-serif; background: #090909; color: #fff; }
+      * { box-sizing: border-box; }
+      body { margin: 0; padding: 24px; background: #090909; }
+      header { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; margin: 0 auto 18px; max-width: 1120px; }
+      h1 { margin: 0; font-size: 26px; }
+      p { margin: 0; color: #aaa; font-size: 14px; }
+      .overview-grid { width: 898px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 170px); gap: 18px 12px; }
+      .theme-card { overflow: hidden; border: 1px solid #3b3b3b; border-radius: 10px; background: #151515; box-shadow: 0 8px 25px #0008; }
+      .theme-label { height: 34px; padding: 0 9px; display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+      .theme-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 700; font-size: 12px; }
+      .theme-accent { width: 15px; height: 15px; flex: 0 0 15px; border: 2px solid #fff; border-radius: 50%; background: var(--swatch); }
+      .preview-window { width: 170px; overflow: hidden; background: #000; }
+      .preview-window iframe { width: 430px; height: 720px; border: 0; transform-origin: top left; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Mobile Theme Overview · 5×2</h1>
+      <p>All previews use the same 430×720 Mobile viewport.</p>
+    </header>
+    <main class="overview-grid">
+      <article class="theme-card"><div class="theme-label"><span class="theme-name">Berlin Red · Original</span><span class="theme-accent" style="--swatch:#e90211"></span></div><div class="preview-window"><iframe src="/?theme=original" title="Berlin Red mobile preview"></iframe></div></article>
+      <article class="theme-card"><div class="theme-label"><span class="theme-name">Ocean Blue</span><span class="theme-accent" style="--swatch:#1596ff"></span></div><div class="preview-window"><iframe src="/?theme=ocean" title="Ocean Blue mobile preview"></iframe></div></article>
+      <article class="theme-card"><div class="theme-label"><span class="theme-name">Royal Violet</span><span class="theme-accent" style="--swatch:#7b3ff2"></span></div><div class="preview-window"><iframe src="/?theme=violet" title="Royal Violet mobile preview"></iframe></div></article>
+      <article class="theme-card"><div class="theme-label"><span class="theme-name">Neon Pink</span><span class="theme-accent" style="--swatch:#ff2d91"></span></div><div class="preview-window"><iframe src="/?theme=pink" title="Neon Pink mobile preview"></iframe></div></article>
+      <article class="theme-card"><div class="theme-label"><span class="theme-name">Emerald</span><span class="theme-accent" style="--swatch:#00b873"></span></div><div class="preview-window"><iframe src="/?theme=emerald" title="Emerald mobile preview"></iframe></div></article>
+      <article class="theme-card"><div class="theme-label"><span class="theme-name">Sunset</span><span class="theme-accent" style="--swatch:#ff6b00"></span></div><div class="preview-window"><iframe src="/?theme=sunset" title="Sunset mobile preview"></iframe></div></article>
+      <article class="theme-card"><div class="theme-label"><span class="theme-name">Electric Gold</span><span class="theme-accent" style="--swatch:#f2bd00"></span></div><div class="preview-window"><iframe src="/?theme=gold" title="Electric Gold mobile preview"></iframe></div></article>
+      <article class="theme-card"><div class="theme-label"><span class="theme-name">Ice Blue</span><span class="theme-accent" style="--swatch:#52d6ff"></span></div><div class="preview-window"><iframe src="/?theme=ice" title="Ice Blue mobile preview"></iframe></div></article>
+      <article class="theme-card"><div class="theme-label"><span class="theme-name">Acid Lime</span><span class="theme-accent" style="--swatch:#b9ee00"></span></div><div class="preview-window"><iframe src="/?theme=lime" title="Acid Lime mobile preview"></iframe></div></article>
+      <article class="theme-card"><div class="theme-label"><span class="theme-name">Soft Coral</span><span class="theme-accent" style="--swatch:#FBA48F"></span></div><div class="preview-window"><iframe src="/?theme=crimson" title="Soft Coral mobile preview"></iframe></div></article>
+    </main>
+    <script>
+      function sizePreviews() {
+        document.querySelectorAll('.preview-window').forEach((windowElement) => {
+          const scale = windowElement.clientWidth / 430;
+          windowElement.style.height = `${720 * scale}px`;
+          windowElement.querySelector('iframe').style.transform = `scale(${scale})`;
+        });
+      }
+      new ResizeObserver(sizePreviews).observe(document.querySelector('.overview-grid'));
+      window.addEventListener('load', sizePreviews);
+      window.addEventListener('resize', sizePreviews);
+    </script>
+  </body>
+</html>
