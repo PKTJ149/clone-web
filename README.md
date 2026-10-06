@@ -1,5 +1,9 @@
 # LSMBERLIN777 Website Clone
 
+## Required Reading for AI Agents
+
+Before starting any work, read `AGENTS.md` and the complete [CLONE_AND_THEME_WORKFLOW.md](CLONE_AND_THEME_WORKFLOW.md). Follow its Desktop/Mobile inspection, theme preservation, and verification requirements.
+
 A Vite implementation of the supplied LSMBERLIN777 landing page reference.
 
 ## Run
